@@ -1,8 +1,15 @@
 use std::{collections::HashSet, thread, time::Duration};
-use windows::Win32::UI::Input::KeyboardAndMouse::{GetAsyncKeyState, MapVirtualKeyA, GetKeyNameTextA};
+use windows::Win32::UI::Input::KeyboardAndMouse::{
+    GetAsyncKeyState, GetKeyNameTextA, MapVirtualKeyA,
+};
 
 fn get_key_name(vk_code: u32) -> String {
-    let scan_code = unsafe { MapVirtualKeyA(vk_code as u32, windows::Win32::UI::Input::KeyboardAndMouse::MAP_VIRTUAL_KEY_TYPE(0)) };
+    let scan_code = unsafe {
+        MapVirtualKeyA(
+            vk_code as u32,
+            windows::Win32::UI::Input::KeyboardAndMouse::MAP_VIRTUAL_KEY_TYPE(0),
+        )
+    };
     if scan_code == 0 {
         return format!("Unknown({})", vk_code);
     }
