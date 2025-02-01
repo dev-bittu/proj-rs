@@ -1,6 +1,6 @@
 [workspace]
 
-members = [ "port_sniffer","snake"]
+members = [ "port_sniffer","snake", "win_keylogger"]
 resolver = "2"
 
 [workspace.dependencies]
